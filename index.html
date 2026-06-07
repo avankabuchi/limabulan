@@ -168,6 +168,7 @@
     line-height: 1.9;
     color: #4a3040;
     max-width: 680px;
+    margin: 0 auto;
   }
   .prose p { margin-bottom: 1.2rem; }
 
@@ -353,7 +354,7 @@
     margin-bottom: 1.2rem;
   }
   .wa-btn {
-    display: inline-flex; align-items: center; gap: .7rem;
+    display: inline-flex; align-items: center; justify-content: center; gap: .7rem;
     padding: 1rem 2.2rem;
     background: #25d366;
     color: #fff;
@@ -364,9 +365,10 @@
     font-size: 1rem;
     box-shadow: 0 4px 20px rgba(37,211,102,.3);
     transition: transform .2s, box-shadow .2s;
+    max-width: 100%;
   }
   .wa-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(37,211,102,.4); }
-  .wa-btn svg { width: 22px; height: 22px; fill: #fff; }
+  .wa-btn svg { width: 22px; height: 22px; fill: #fff; flex-shrink: 0; }
 
   /* ── FOOTER ── */
   footer {
@@ -398,6 +400,46 @@
     border: none; border-radius: 50%;
     width: 42px; height: 42px; font-size: 1.3rem;
     cursor: pointer; display: flex; align-items: center; justify-content: center;
+  }
+
+  /* ── RESPONSIVE MEDIA QUERIES (PENAMBAHAN BARU) ── */
+  @media (max-width: 768px) {
+    section { padding: 3rem 1rem; }
+    .hero { padding: 1.5rem; }
+    .wish-card { padding: 1.8rem 1.2rem; }
+    .quiz-card { padding: 1.5rem 1.2rem; }
+    
+    .photo-grid {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 1rem;
+    }
+    
+    .timeline::before { left: 18px; }
+    .tl-dot {
+      width: 36px; height: 36px;
+      font-size: 1rem;
+    }
+    .tl-item { gap: 1rem; padding-left: 0; }
+    
+    .wa-btn {
+      padding: 0.8rem 1.5rem;
+      font-size: 0.95rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .tabs-wrapper { padding: 0.5rem; }
+    .tab-btn { padding: 0.4rem 0.9rem; font-size: 0.8rem; }
+    
+    .photo-grid {
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 0.8rem;
+    }
+    
+    .hero-title { line-height: 1.2; }
+    .quiz-q { font-size: 1.1rem; }
+    .wish-big { font-size: 1.4rem; }
+    .prose { font-size: 1.1rem; }
   }
 </style>
 </head>
@@ -495,14 +537,14 @@
       <div class="tl-dot">🎶</div>
       <div class="tl-content">
         <p class="tl-date">Bulan ke-3</p>
-        <p class="tl-text">Ada lelucon yang hanya kita yang paham, dan ada rasa yang makin dalam.</p>
+        <p class="tl-text">Ada playlist bersama, ada lelucon yang hanya kita yang paham, dan ada rasa yang makin dalam.</p>
       </div>
     </div>
     <div class="tl-item" style="animation-delay:.55s">
       <div class="tl-dot">🌙</div>
       <div class="tl-content">
         <p class="tl-date">Bulan ke-4</p>
-        <p class="tl-text">Belajar bersabar, belajar saling mengerti, dan menemukan bahwa mencinta itu butuh usaha.</p>
+        <p class="tl-text">Belajar bersabar, belajar saling mengerti, dan menemukan bahwa mencinta itu butuh usaha — dan itu indah.</p>
       </div>
     </div>
     <div class="tl-item" style="animation-delay:.65s">
