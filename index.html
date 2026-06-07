@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy 5th Monthsary — Avan & Kirana 💕</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose: #c97b84;
+    --rose-dark: #a85965;
+    --rose-light: #f5d6da;
+    --gold: #c9a86c;
+    --gold-light: #f0e2c8;
+    --cream: #fdf6f0;
+    --deep: #3a2030;
+    --muted: #8a6070;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--deep);
+    overflow-x: hidden;
+  }
+
+  /* ── PETALS BACKGROUND ── */
+  .petals-bg {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
+  }
+  .petal {
+    position: absolute;
+    width: 10px; height: 14px;
+    border-radius: 50% 0 50% 0;
+    opacity: 0;
+    animation: fall linear infinite;
+  }
+  @keyframes fall {
+    0%   { transform: translateY(-20px) rotate(0deg); opacity: 0.7; }
+    100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative; z-index: 1;
+    min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(160deg, #fdf6f0 0%, #fce8ed 50%, #f5d6da 100%);
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='40' cy='40' r='1.5' fill='%23c97b84' opacity='0.15'/%3E%3C/svg%3E") repeat;
+    pointer-events: none;
+  }
+  .heart-icon {
+    font-size: 3.5rem;
+    animation: heartbeat 1.5s ease-in-out infinite;
+    display: block; margin-bottom: 1.2rem;
+  }
+  @keyframes heartbeat {
+    0%,100% { transform: scale(1); }
+    14%     { transform: scale(1.18); }
+    28%     { transform: scale(1); }
+    42%     { transform: scale(1.12); }
+    70%     { transform: scale(1); }
+  }
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--rose-dark);
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    margin-bottom: .8rem;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 7vw, 5rem);
+    line-height: 1.15;
+    color: var(--deep);
+    margin-bottom: 1rem;
+  }
+  .hero-title span { color: var(--rose-dark); }
+  .hero-names {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1.5rem, 4vw, 2.6rem);
+    color: var(--rose);
+    margin-bottom: 2rem;
+  }
+  .scroll-hint {
+    margin-top: 2.5rem;
+    animation: bounce 2s infinite;
+    color: var(--rose);
+    font-size: .85rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+  @keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50%      { transform: translateY(8px); }
+  }
+
+  /* ── NAV TABS ── */
+  .tabs-wrapper {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(253,246,240,.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rose-light);
+    padding: .5rem 1rem;
+  }
+  .tabs {
+    display: flex; gap: .4rem; overflow-x: auto; max-width: 960px; margin: 0 auto;
+    scrollbar-width: none;
+  }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    flex-shrink: 0;
+    padding: .5rem 1.1rem;
+    border: 1.5px solid var(--rose-light);
+    border-radius: 99px;
+    background: transparent;
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: .82rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all .25s;
+    white-space: nowrap;
+  }
+  .tab-btn:hover, .tab-btn.active {
+    background: var(--rose);
+    border-color: var(--rose);
+    color: #fff;
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    position: relative; z-index: 1;
+    max-width: 900px; margin: 0 auto;
+    padding: 5rem 1.5rem;
+    display: none;
+  }
+  section.active { display: block; }
+  .section-tag {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: .95rem;
+    color: var(--rose);
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    margin-bottom: .5rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    line-height: 1.2;
+    margin-bottom: 1.8rem;
+  }
+  .prose {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    line-height: 1.9;
+    color: #4a3040;
+    max-width: 680px;
+  }
+  .prose p { margin-bottom: 1.2rem; }
+
+  /* ── PHOTO GRID ── */
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.2rem;
+    margin-top: 2rem;
+  }
+  .photo-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 4/5;
+    background: var(--rose-light);
+    box-shadow: 0 4px 24px rgba(201,123,132,.15);
+    cursor: pointer;
+    transition: transform .3s, box-shadow .3s;
+  }
+  .photo-card:hover { transform: translateY(-6px) rotate(1deg); box-shadow: 0 12px 40px rgba(201,123,132,.25); }
+  .photo-card img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform .5s;
+  }
+  .photo-card:hover img { transform: scale(1.07); }
+  .photo-caption {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: .8rem 1rem;
+    background: linear-gradient(transparent, rgba(58,32,48,.7));
+    color: #fff;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    opacity: 0; transition: opacity .3s;
+  }
+  .photo-card:hover .photo-caption { opacity: 1; }
+  .photo-placeholder {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: .5rem;
+    color: var(--rose-dark);
+    background: linear-gradient(135deg, var(--rose-light), var(--gold-light));
+  }
+  .photo-placeholder .photo-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-style: italic;
+    color: var(--rose);
+  }
+  .photo-placeholder .photo-label {
+    font-size: .8rem;
+    color: var(--muted);
+    letter-spacing: .1em;
+  }
+
+  /* ── TIMELINE ── */
+  .timeline { margin-top: 2rem; position: relative; }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 22px; top: 0; bottom: 0;
+    width: 2px; background: linear-gradient(to bottom, var(--rose-light), var(--rose), var(--rose-light));
+  }
+  .tl-item {
+    display: flex; gap: 1.4rem; margin-bottom: 2.2rem; padding-left: .5rem;
+    animation: fadeUp .5s ease both;
+  }
+  @keyframes fadeUp {
+    from { opacity:0; transform: translateY(20px); }
+    to   { opacity:1; transform: translateY(0); }
+  }
+  .tl-dot {
+    flex-shrink: 0; width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--rose-light);
+    border: 2px solid var(--rose);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    position: relative; z-index: 1;
+  }
+  .tl-content { padding-top: .3rem; }
+  .tl-date {
+    font-size: .8rem; font-weight: 500;
+    color: var(--rose);
+    letter-spacing: .1em; text-transform: uppercase;
+    margin-bottom: .2rem;
+  }
+  .tl-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--deep);
+  }
+
+  /* ── QUIZ ── */
+  .quiz-card {
+    background: #fff;
+    border: 1.5px solid var(--rose-light);
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 24px rgba(201,123,132,.08);
+  }
+  .quiz-q {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.4;
+  }
+  .quiz-options { display: grid; gap: .7rem; }
+  .quiz-opt {
+    padding: .75rem 1.2rem;
+    border: 1.5px solid var(--rose-light);
+    border-radius: 12px;
+    background: var(--cream);
+    text-align: left;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .95rem;
+    cursor: pointer;
+    transition: all .2s;
+    color: var(--deep);
+  }
+  .quiz-opt:hover:not(:disabled) { border-color: var(--rose); background: var(--rose-light); }
+  .quiz-opt.correct  { border-color: #4caf50; background: #e8f5e9; color: #1b5e20; }
+  .quiz-opt.wrong    { border-color: #e57373; background: #ffebee; color: #b71c1c; }
+  .quiz-opt:disabled { cursor: default; }
+  .quiz-feedback {
+    margin-top: 1rem;
+    padding: .7rem 1rem;
+    border-radius: 10px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    display: none;
+  }
+  .quiz-feedback.show { display: block; }
+  .quiz-feedback.correct { background: #e8f5e9; color: #2e7d32; }
+  .quiz-feedback.wrong   { background: #fff8e1; color: #e65100; }
+  .score-display {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--rose-light), var(--gold-light));
+    border-radius: 20px;
+    margin-top: 1.5rem;
+    display: none;
+  }
+  .score-display.show { display: block; }
+  .score-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: var(--rose-dark);
+  }
+
+  /* ── WISH CARD ── */
+  .wish-card {
+    background: linear-gradient(135deg, #fff0f3, #fff8f0);
+    border: 1.5px solid var(--rose-light);
+    border-radius: 24px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    box-shadow: 0 8px 40px rgba(201,123,132,.12);
+  }
+  .wish-big {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    line-height: 1.3;
+    color: var(--rose-dark);
+    margin-bottom: 1.2rem;
+  }
+  .divider-flower { margin: 1.5rem auto; color: var(--rose); font-size: 1.3rem; letter-spacing: .5rem; }
+
+  /* ── WA BUTTON ── */
+  .wa-section {
+    text-align: center;
+    padding: 3rem 1.5rem 5rem;
+    position: relative; z-index: 1;
+  }
+  .wa-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--muted);
+    margin-bottom: 1.2rem;
+  }
+  .wa-btn {
+    display: inline-flex; align-items: center; gap: .7rem;
+    padding: 1rem 2.2rem;
+    background: #25d366;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 99px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    box-shadow: 0 4px 20px rgba(37,211,102,.3);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .wa-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(37,211,102,.4); }
+  .wa-btn svg { width: 22px; height: 22px; fill: #fff; }
+
+  /* ── FOOTER ── */
+  footer {
+    position: relative; z-index: 1;
+    text-align: center;
+    padding: 1.5rem;
+    border-top: 1px solid var(--rose-light);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--rose);
+    font-size: 1rem;
+  }
+
+  /* ── LIGHTBOX ── */
+  .lightbox {
+    display: none; position: fixed; inset: 0; z-index: 9999;
+    background: rgba(30,10,20,.85);
+    align-items: center; justify-content: center;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img {
+    max-width: 90vw; max-height: 85vh;
+    border-radius: 12px;
+    box-shadow: 0 20px 80px rgba(0,0,0,.5);
+  }
+  .lb-close {
+    position: absolute; top: 1.5rem; right: 1.5rem;
+    background: var(--rose); color: #fff;
+    border: none; border-radius: 50%;
+    width: 42px; height: 42px; font-size: 1.3rem;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+  }
+</style>
+</head>
+<body>
+
+<!-- Falling petals -->
+<div class="petals-bg" id="petalsBg"></div>
+
+<!-- Hero -->
+<div class="hero" id="home">
+  <span class="heart-icon">💕</span>
+  <p class="hero-sub">Selamat memperingati</p>
+  <h1 class="hero-title">Happy <span>5th</span><br>Monthsary, Sayang ❤️</h1>
+  <p class="hero-names">Avan &amp; Kirana</p>
+  <p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--muted);max-width:420px;line-height:1.7">
+    Hari ini genap 5 bulan kita bersama. Terima kasih untuk setiap momen indah yang sudah kita ciptakan.
+  </p>
+  <p class="scroll-hint">✦ &nbsp; gulir ke bawah &nbsp; ✦</p>
+</div>
+
+<!-- Sticky Tabs -->
+<div class="tabs-wrapper">
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTab('ucapan')">💌 Ucapan</button>
+    <button class="tab-btn" onclick="showTab('foto')">📷 Foto Kita</button>
+    <button class="tab-btn" onclick="showTab('timeline')">⏳ Perjalanan</button>
+    <button class="tab-btn" onclick="showTab('quiz')">💡 Kuis Kita</button>
+    <button class="tab-btn" onclick="showTab('kirim')">💬 Kirim ke Mas Avan</button>
+  </div>
+</div>
+
+<!-- ── TAB: Ucapan ── -->
+<section id="ucapan" class="active">
+  <p class="section-tag">✦ dari hati</p>
+  <h2 class="section-title">Untuk Cintaku</h2>
+  <div class="wish-card">
+    <p class="wish-big">Happy 5th Monthsary, Sayang ❤️</p>
+    <div class="divider-flower">✿ ✦ ✿</div>
+    <div class="prose">
+      <p>Hari ini genap 5 bulan kita bersama. Mungkin belum terlalu lama, tapi selama itu kamu sudah menjadi bagian yang sangat berarti dalam hidupku.</p>
+      <p>Terima kasih karena selalu ada, selalu mendengarkan, dan selalu membuat hari-hariku terasa lebih indah. Bersamamu aku belajar tentang kesabaran, pengertian, dan bagaimana mencintai seseorang dengan tulus.</p>
+      <p>Semoga hubungan kita terus tumbuh menjadi lebih baik setiap harinya. Apa pun yang nanti kita hadapi, aku berharap kita tetap saling menggenggam, saling menguatkan, dan terus berjalan menuju masa depan yang sama.</p>
+      <p>Selamat 5 bulan, cintaku. Terima kasih sudah memilih untuk tetap bersamaku sampai hari ini.</p>
+      <p><strong style="color:var(--rose-dark)">Aku sayang kamu, hari ini, besok, dan seterusnya. ❤️✨</strong></p>
+    </div>
+    <div class="divider-flower">✿ ✦ ✿</div>
+    <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:1.3rem;color:var(--rose)">~ Kirana ~</p>
+  </div>
+</section>
+
+<!-- ── TAB: Foto ── -->
+<section id="foto">
+  <p class="section-tag">✦ kenangan kita</p>
+  <h2 class="section-title">Foto Foto Kita 📷</h2>
+  <p style="color:var(--muted);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;margin-bottom:1rem">
+    Ganti foto1.jpg – foto10.jpg dengan foto asli kalian 💕
+  </p>
+  <div class="photo-grid" id="photoGrid"></div>
+</section>
+
+<!-- ── TAB: Timeline ── -->
+<section id="timeline">
+  <p class="section-tag">✦ perjalanan kita</p>
+  <h2 class="section-title">5 Bulan Bersama</h2>
+  <div class="timeline">
+    <div class="tl-item" style="animation-delay:.05s">
+      <div class="tl-dot">🌟</div>
+      <div class="tl-content">
+        <p class="tl-date">Awal cerita</p>
+        <p class="tl-text">Kita pertama kali bertemu di <strong>Sender Demangan</strong> — sebuah tempat yang kini selalu terasa spesial setiap kali diingat.</p>
+      </div>
+    </div>
+    <div class="tl-item" style="animation-delay:.15s">
+      <div class="tl-dot">💫</div>
+      <div class="tl-content">
+        <p class="tl-date">Momen bersejarah</p>
+        <p class="tl-text">Di <strong>Grand Altuz Hotel</strong>, tepat jam 10 malam, kita resmi menjadi sepasang kekasih. Malam itu jadi malam yang tidak akan pernah terlupakan.</p>
+      </div>
+    </div>
+    <div class="tl-item" style="animation-delay:.25s">
+      <div class="tl-dot">☕</div>
+      <div class="tl-content">
+        <p class="tl-date">Bulan ke-1</p>
+        <p class="tl-text">Hari-hari penuh rasa baru, degup jantung yang belum juga tenang, dan senyum yang susah disembunyikan.</p>
+      </div>
+    </div>
+    <div class="tl-item" style="animation-delay:.35s">
+      <div class="tl-dot">🌸</div>
+      <div class="tl-content">
+        <p class="tl-date">Bulan ke-2</p>
+        <p class="tl-text">Mulai hafal kebiasaan satu sama lain. Belajar hadir di hari-hari biasa, bukan hanya momen istimewa.</p>
+      </div>
+    </div>
+    <div class="tl-item" style="animation-delay:.45s">
+      <div class="tl-dot">🎶</div>
+      <div class="tl-content">
+        <p class="tl-date">Bulan ke-3</p>
+        <p class="tl-text">Ada lelucon yang hanya kita yang paham, dan ada rasa yang makin dalam.</p>
+      </div>
+    </div>
+    <div class="tl-item" style="animation-delay:.55s">
+      <div class="tl-dot">🌙</div>
+      <div class="tl-content">
+        <p class="tl-date">Bulan ke-4</p>
+        <p class="tl-text">Belajar bersabar, belajar saling mengerti, dan menemukan bahwa mencinta itu butuh usaha.</p>
+      </div>
+    </div>
+    <div class="tl-item" style="animation-delay:.65s">
+      <div class="tl-dot">❤️</div>
+      <div class="tl-content">
+        <p class="tl-date">Bulan ke-5 — Hari ini 🎉</p>
+        <p class="tl-text">5 bulan penuh kenangan. Dan masih banyak lagi yang akan kita tulis bersama. Selamat monthsary, sayangku.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TAB: Quiz ── -->
+<section id="quiz">
+  <p class="section-tag">✦ seberapa hafal kamu?</p>
+  <h2 class="section-title">Kuis Tentang Kita 💡</h2>
+  <p style="color:var(--muted);font-family:'Cormorant Garamond',serif;font-style:italic;margin-bottom:2rem">
+    Jawab pertanyaan di bawah ini dengan jujur ya, Mas ❤️
+  </p>
+
+  <!-- Q1 -->
+  <div class="quiz-card" id="qcard-1">
+    <p class="quiz-q">1. Di mana kita pertama kali bertemu? 🤔</p>
+    <div class="quiz-options">
+      <button class="quiz-opt" onclick="checkAns(this,1,false,'Bukan di sini, coba ingat lagi ya!')">Alun-Alun Kidul</button>
+      <button class="quiz-opt" onclick="checkAns(this,1,true,'Betul banget! Sender Demangan jadi saksi awal cerita kita 💕')">Sender Demangan</button>
+      <button class="quiz-opt" onclick="checkAns(this,1,false,'Kita belum pernah ketemu di sana, lho!')">Malioboro</button>
+      <button class="quiz-opt" onclick="checkAns(this,1,false,'Hampir mirip, tapi bukan itu jawabannya!')">Kafe Kota Baru</button>
+    </div>
+    <div class="quiz-feedback" id="qfb-1"></div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="quiz-card" id="qcard-2">
+    <p class="quiz-q">2. Di mana kita resmi jadian? 🌹</p>
+    <div class="quiz-options">
+      <button class="quiz-opt" onclick="checkAns(this,2,false,'Bukan di sini, sayang!')">Amanjiwo Resort</button>
+      <button class="quiz-opt" onclick="checkAns(this,2,false,'Wah, kamu lupa ya? Coba ingat lagi!')">Restoran Prambanan</button>
+      <button class="quiz-opt" onclick="checkAns(this,2,true,'Yess! Grand Altuz Hotel, momen yang tidak terlupakan! ✨')">Grand Altuz Hotel</button>
+      <button class="quiz-opt" onclick="checkAns(this,2,false,'Bukan di sana, coba pikir lagi!')">Hotel Tentrem</button>
+    </div>
+    <div class="quiz-feedback" id="qfb-2"></div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="quiz-card" id="qcard-3">
+    <p class="quiz-q">3. Jam berapa kita jadian? 🕙</p>
+    <div class="quiz-options">
+      <button class="quiz-opt" onclick="checkAns(this,3,false,'Belum jam segitu, Mas!')">Jam 7 malam</button>
+      <button class="quiz-opt" onclick="checkAns(this,3,false,'Hampir! Tapi bukan tepat jam itu.')">Jam 9 malam</button>
+      <button class="quiz-opt" onclick="checkAns(this,3,true,'Betul! Tepat jam 10 malam, kamu resmi jadi milikku 🌙❤️')">Jam 10 malam</button>
+      <button class="quiz-opt" onclick="checkAns(this,3,false,'Bukan tengah malam, tapi hampir hehe!')">Jam 12 malam</button>
+    </div>
+    <div class="quiz-feedback" id="qfb-3"></div>
+  </div>
+
+  <div class="score-display" id="scoreDisplay">
+    <p style="font-size:1.1rem;color:var(--muted);margin-bottom:.5rem;font-family:'Cormorant Garamond',serif;font-style:italic">Skor kamu</p>
+    <p class="score-num" id="scoreNum">0 / 3</p>
+    <p style="margin-top:.8rem;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;color:var(--deep)" id="scoreMsg"></p>
+  </div>
+</section>
+
+<!-- ── TAB: Kirim ke WA ── -->
+<section id="kirim">
+  <p class="section-tag">✦ pesan spesial</p>
+  <h2 class="section-title">Pesan untuk Mas Avan 💬</h2>
+  <div class="wish-card">
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;color:var(--muted);margin-bottom:1.5rem">
+      Klik tombol di bawah untuk langsung mengirim ucapan ini ke WhatsApp Mas Avan ❤️
+    </p>
+    <textarea id="msgInput" style="width:100%;min-height:200px;padding:1rem;border-radius:14px;border:1.5px solid var(--rose-light);background:#fff;font-family:'Cormorant Garamond',serif;font-size:1.05rem;line-height:1.7;color:var(--deep);resize:vertical;outline:none" placeholder="Tulis pesan tambahan untuk Mas Avan...">Happy 5th Monthsary, Mas Avan! 💕❤️
+
+Hari ini genap 5 bulan kita bersama. Mungkin belum terlalu lama, tapi kamu sudah menjadi bagian yang sangat berarti dalam hidupku.
+
+Terima kasih karena selalu ada, selalu mendengarkan, dan selalu membuat hari-hariku terasa lebih indah. Bersamamu aku belajar tentang kesabaran, pengertian, dan bagaimana mencintai seseorang dengan tulus.
+
+Semoga kita terus tumbuh bersama, saling menggenggam, saling menguatkan, dan berjalan menuju masa depan yang sama.
+
+Selamat 5 bulan, cintaku. Aku sayang kamu, hari ini, besok, dan seterusnya. ❤️✨
+
+~ Kirana ~</textarea>
+    <br><br>
+    <p style="font-size:.85rem;color:var(--muted);margin-bottom:.8rem;font-family:'DM Sans',sans-serif">Pesan akan langsung dikirimkan ke WhatsApp +6285794444137</p>
+    <a id="waLink" href="#" target="_blank" class="wa-btn" onclick="openWA(event)">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Kirim ke WhatsApp Mas Avan 💕
+    </a>
+  </div>
+</section>
+
+<!-- WA Section (global) -->
+<div class="wa-section">
+  <p class="wa-label">— atau kirim langsung dari sini —</p>
+  <a href="#" class="wa-btn" onclick="openWA(event)">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Kirim Ucapan via WhatsApp
+  </a>
+</div>
+
+<footer>
+  ❤️ Avan &amp; Kirana — 5 Bulan Bersama ❤️
+</footer>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lb-close" onclick="closeLightbox()">✕</button>
+  <img id="lbImg" src="" alt="">
+</div>
+
+<script>
+// ── PETALS ──
+const colors = ['#f7c5cb','#f4a7b0','#fce4ec','#f8bbd0','#ffcdd2','#f9dbc0','#fdebd0'];
+const bg = document.getElementById('petalsBg');
+for(let i=0;i<25;i++){
+  const p = document.createElement('div');
+  p.className='petal';
+  const c = colors[i%colors.length];
+  p.style.cssText=`background:${c};left:${Math.random()*100}%;top:${Math.random()*100}%;animation-duration:${6+Math.random()*8}s;animation-delay:${Math.random()*8}s;transform:rotate(${Math.random()*360}deg)`;
+  bg.appendChild(p);
+}
+
+// ── TABS ──
+function showTab(id){
+  document.querySelectorAll('section[id]').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.currentTarget.classList.add('active');
+  window.scrollTo({top:document.querySelector('.tabs-wrapper').offsetTop-10,behavior:'smooth'});
+}
+
+// ── PHOTOS ──
+const captions=['Selalu bersama ❤️','Momen tak terlupakan','Kamu senyumku','Tempat favorite kita','Bersama itu bahagia','Genggam tanganku','Momen golden hour','Mataku selalu mencarimu','Perjalanan kita','Semoga selamanya'];
+const grid=document.getElementById('photoGrid');
+for(let i=1;i<=10;i++){
+  const card=document.createElement('div');
+  card.className='photo-card';
+  card.onclick=()=>openLightbox(`foto${i}.jpg`);
+  card.innerHTML=`
+    <div class="photo-placeholder">
+      <span style="font-size:2.5rem">📸</span>
+      <span class="photo-num">foto${i}.jpg</span>
+      <span class="photo-label">Klik untuk lihat</span>
+    </div>
+    <div class="photo-caption">${captions[i-1]}</div>
+  `;
+  // Try loading real image
+  const img=document.createElement('img');
+  img.src=`foto${i}.jpg`;
+  img.alt=captions[i-1];
+  img.onload=()=>{
+    card.querySelector('.photo-placeholder').replaceWith(img);
+  };
+  grid.appendChild(card);
+}
+
+// ── QUIZ ──
+let quizScore=0, answered={};
+function checkAns(btn,qNum,isCorrect,msg){
+  if(answered[qNum]) return;
+  answered[qNum]=true;
+  const opts=btn.closest('.quiz-options').querySelectorAll('.quiz-opt');
+  opts.forEach(o=>o.disabled=true);
+  const fb=document.getElementById(`qfb-${qNum}`);
+  if(isCorrect){
+    btn.classList.add('correct');
+    fb.textContent='✅ '+msg;
+    fb.className='quiz-feedback show correct';
+    quizScore++;
+  } else {
+    btn.classList.add('wrong');
+    fb.textContent='❌ '+msg;
+    fb.className='quiz-feedback show wrong';
+  }
+  if(Object.keys(answered).length===3){
+    const sd=document.getElementById('scoreDisplay');
+    sd.classList.add('show');
+    document.getElementById('scoreNum').textContent=quizScore+' / 3';
+    const msgs=['Hmm, kayaknya perlu lebih sering ngobrol ya sayang? 😅','Lumayan! Tapi masih ada yang perlu diingat lagi 🥰','Sempurna! Kamu benar-benar hafal setiap momen kita ❤️✨'];
+    document.getElementById('scoreMsg').textContent=msgs[quizScore];
+  }
+}
+
+// ── WHATSAPP ──
+function openWA(e){
+  e.preventDefault();
+  const msg=document.getElementById('msgInput')?.value||`Happy 5th Monthsary, Mas Avan! 💕❤️\n\nHari ini genap 5 bulan kita bersama. Kamu sudah menjadi bagian yang sangat berarti dalam hidupku.\n\nTerima kasih karena selalu ada, selalu mendengarkan, dan selalu membuat hari-hariku terasa lebih indah.\n\nAku sayang kamu, hari ini, besok, dan seterusnya. ❤️✨\n\n~ Kirana ~`;
+  window.open('https://wa.me/6285794444137?text='+encodeURIComponent(msg),'_blank');
+}
+
+// ── LIGHTBOX ──
+function openLightbox(src){
+  const lb=document.getElementById('lightbox');
+  document.getElementById('lbImg').src=src;
+  lb.classList.add('open');
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('open');
+}
+</script>
+</body>
+</html>
